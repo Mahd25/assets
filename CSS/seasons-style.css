@@ -1,0 +1,1080 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/Vazir-Variable.woff') format('woff'),
+        url('../fonts/Vazir-Variable.woff2') format('woff2');
+    /* font-weight: bold; */
+    font-style: normal;
+}
+
+
+:root {
+    --code-BG: #021028;
+    --comment-color: #B18EB1;
+    --number-color: #ff4800;
+    --names-color: #61AEEE;
+    --keyword-color: #F92672;
+    --True-False: #56B6C2;
+    --strings: #98c379;
+}
+
+
+* {
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+}
+
+body,
+html {
+    font-family: 'Vazir', sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+/* --------------------- These items affect the entire project --------------------- */
+p {
+    font-weight: 500;
+}
+
+/* ----------------------------------------------- */
+.edu-img {
+    margin: 25px 0;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+/* ----------------------- block quote ------------------------ */
+blockquote:has(span) {
+    direction: ltr;
+    border-radius: 5px;
+    border-inline-width: 5px;
+    margin: 20px 0;
+    padding: 5px 10px;
+}
+blockquote, blockquote:has(blockquote), blockquote:has(.rtl-text) {
+    direction: rtl;
+    font-style: italic;
+    border-inline-start: 7px solid #00b4ff;
+    border-radius: 10px;
+    margin: 30px 0;
+    padding: 5px 20px;
+    background: #f3faff;
+}
+
+/* ----------------------------------------------- */
+span.en-text {
+    display: inline-block;
+    direction: ltr;
+}
+
+span.rtl-text {
+    display: inline-block;
+    direction: rtl;
+}
+
+@media (max-width:500px){
+    blockquote {
+        font-size: 0.9rem;
+    }
+
+    .edu-img {
+        margin: 0;
+    }
+
+    h5 {
+        margin: 1rem 0;
+    }
+}
+
+/* --------------------------------------------------------------------------------- */
+
+center *:not(p) {
+    background-color: antiquewhite;
+    padding: 10px 15px;
+    border-radius: 12px;
+}
+
+/* -------------------------------- for season zero -------------------------------- */
+li {
+    margin-bottom: 7px;
+}
+
+li code {
+    display: inline-block;
+    direction: ltr;
+}
+/* ------------------------------------------------------------------------------- */
+
+/* navigation */
+nav.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1.django-eBooklet {
+    margin: 0;
+    padding: 0;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.icon.fa-solid {
+    display: none;
+}
+
+.icon.active {
+    display: inline;
+}
+
+.back-home-icon {
+    font-size: 1.5625rem;
+    color: white;
+}
+/* ----------------------------------------------------------------------------------------------- */
+
+/* container */
+.container {
+    height: calc(100% - 50px);
+}
+/* ----------------------------------------------------------------------------------------------- */
+
+/* menu-list */
+.menu-list {
+    overflow-y: auto;
+    height: 91.5vh;
+    top: 65px;
+    position: fixed;
+    z-index: 100;
+    background-color: #f4f4f4;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0 8px 8px 0;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.menu-list a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.menu-list a:hover {
+    background-color: #ddd;
+}
+/* -------------------------------------------------------------------------------------------------- */
+
+/* content */
+.content {
+    padding: 20px 75px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.5s ease-in-out;
+}
+/* ---------------------------------------------------------------------------------------------------- */
+
+/* Media Queries */
+@media (min-width: 1200px) {
+    nav.menu {
+        padding: 15px 25px;
+    }
+
+    .icon {
+        font-size: 2rem;
+        /* 37px */
+    }
+
+    .container {
+        margin-top: 60px;
+    }
+
+    .content.active {
+        margin-right: calc(23vw - 50px);
+        padding: 20px;
+        overflow: auto;
+    }
+
+    .menu-list {
+        width: calc(23vw - 50px);
+        right: calc(-23vw + 50px);
+    }
+
+    .menu-list.active {
+        top: 62px;
+        bottom: 0;
+        transform: translateX(calc(-23vw + 50px));
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+    nav.menu {
+        padding: 15px 25px;
+    }
+
+    .icon {
+        font-size: 2.625rem;
+        /* 42px */
+    }
+
+    .container {
+        margin-top: 70px;
+    }
+
+    .menu-list {
+        width: calc(35vw - 50px);
+        right: calc(-35vw + 50px);
+    }
+
+    .menu-list.active {
+        top: 65px;
+        bottom: 0;
+        transform: translateX(calc(-35vw + 50px));
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    nav.menu {
+        padding: 15px 25px;
+    }
+
+    .icon {
+        font-size: 2.625rem;
+        /* 42px */
+    }
+
+    .container {
+        margin-top: 70px;
+    }
+
+    .menu-list {
+        width: 40vw;
+        right: -40vw;
+    }
+
+    .menu-list.active {
+        top: 80px;
+        bottom: 0;
+        transform: translateX(-40vw);
+    }
+
+    .content {
+        padding: 20px 45px;
+    }
+}
+
+@media (max-width: 600px) {
+    nav.menu {
+        padding: 15px 25px;
+    }
+
+    .icon {
+        font-size: 1.9rem;
+    }
+
+    .container {
+        margin-top: 40px;
+    }
+
+    .content {
+        padding: 20px 30px;
+    }
+
+    .menu-list {
+        width: 70vw;
+        right: -70vw;
+    }
+
+    .menu-list.active {
+        top: 57px;
+        bottom: 0;
+        transform: translateX(-70vw);
+    }
+}
+/* -------------------------------------------------------------------------------------------------------- */
+
+
+/* Style 'code box' and structure inside it  */
+.code-box {
+    margin-bottom: 20px;
+    text-align: left;
+    direction: ltr;
+    background-color: #00122b;
+    border-radius: 12px;
+}
+
+pre {
+    margin: 0;
+    padding: 18px 25px;
+    overflow-x: auto;
+    color: #ABB2BF;
+    font-family: "Consolas", monospace;
+    font-size: 1rem;
+    line-height: 1.7rem;
+    font-weight: 400;
+}
+
+.code-box pre span {
+    color: #ABB2BF;
+    font-family: "Consolas", monospace;
+    font-size: 1rem;
+    line-height: 1.7rem;
+    font-weight: 400;
+}
+
+
+
+
+p:has(> code) {
+    direction: ltr;
+    text-align: left;
+}
+
+code {
+    background-color: #ffc400;
+    padding: 5px 12px;
+    border-radius: 15px;
+
+    font-family: "Consolas", monospace;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+
+td.linenos .normal {
+    color: inherit;
+    background-color: transparent;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+span.linenos {
+    color: inherit;
+    background-color: transparent;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+td.linenos .special {
+    color: #000000;
+    background-color: #ffffc0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+span.linenos.special {
+    color: #000000;
+    background-color: #ffffc0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.code-box .hll {
+    background-color: #ffffcc
+}
+
+.code-box {
+    background: #021028;
+}
+
+/* ---------------------------------------------------------- */
+/* Comment */
+.code-box .c {
+    color: #3D7B7B;
+    font-style: italic
+}
+
+/* Error */
+.code-box .err {
+    border: 1px solid #FF0000
+}
+
+/* Keyword */
+.code-box .k {
+    color: #F92672;
+    font-weight: bold
+}
+
+/* Operator */
+.code-box .o {
+    color: #ff7700
+}
+
+/* Comment.Hashbang */
+.code-box .ch {
+    color: #3D7B7B;
+    font-style: italic
+}
+
+/* Comment.Multiline */
+.code-box .cm {
+    color: #3D7B7B;
+    font-style: italic
+}
+
+/* Comment.Preproc */
+.code-box .cp {
+    color: #9C6500
+}
+
+/* Comment.PreprocFile */
+.code-box .cpf {
+    color: #3D7B7B;
+    font-style: italic
+}
+
+/* Comment.Single */
+.code-box .c1 {
+    color: #B18EB1;
+    font-style: italic
+}
+
+/* Comment.Special */
+.code-box .cs {
+    color: #3D7B7B;
+    font-style: italic
+}
+
+/* Generic.Deleted */
+.code-box .gd {
+    color: #A00000
+}
+
+/* Generic.Emph */
+.code-box .ge {
+    font-style: italic
+}
+
+/* Generic.EmphStrong */
+.code-box .ges {
+    font-weight: bold;
+    font-style: italic
+}
+
+/* Generic.Error */
+.code-box .gr {
+    color: #E40000
+}
+
+/* Generic.Heading */
+.code-box .gh {
+    color: #000080;
+    font-weight: bold
+}
+
+/* Generic.Inserted */
+.code-box .gi {
+    color: #008400
+}
+
+/* Generic.Output */
+.code-box .go {
+    color: #717171
+}
+
+/* Generic.Prompt */
+.code-box .gp {
+    color: #000080;
+    font-weight: bold
+}
+
+/* Generic.Strong */
+.code-box .gs {
+    font-weight: bold
+}
+
+/* Generic.Subheading */
+.code-box .gu {
+    color: #800080;
+    font-weight: bold
+}
+
+/* Generic.Traceback */
+.code-box .gt {
+    color: #0044DD
+}
+
+/* Keyword.Constant */
+.code-box .kc {
+    color: #56B6C2;
+    font-weight: bold
+}
+
+/* Keyword.Declaration */
+.code-box .kd {
+    color: #008000;
+    font-weight: bold
+}
+
+/* Keyword.Namespace */
+.code-box .kn {
+    color: #F92672;
+    font-weight: bold
+}
+
+/* Keyword.Pseudo */
+.code-box .kp {
+    color: #008000
+}
+
+/* Keyword.Reserved */
+.code-box .kr {
+    color: #008000;
+    font-weight: bold
+}
+
+/* Keyword.Type */
+.code-box .kt {
+    color: #B00040
+}
+
+/* Literal.Number */
+.code-box .m {
+    color: #666666
+}
+
+/* Literal.String */
+.code-box .s {
+    color: #BA2121
+}
+
+/* Name.Attribute */
+.code-box .na {
+    color: #687822
+}
+
+/* Name.Builtin */
+.code-box .nb {
+    color: #008000
+}
+
+/* Name.Class */
+.code-box .nc {
+    color: #61AEEE;
+    font-weight: bold
+}
+
+/* Name.Constant */
+.code-box .no {
+    color: #880000
+}
+
+/* Name.Decorator */
+.code-box .nd {
+    color: #AA22FF
+}
+
+/* Name.Entity */
+.code-box .ni {
+    color: #717171;
+    font-weight: bold
+}
+
+/* Name.Exception */
+.code-box .ne {
+    color: #CB3F38;
+    font-weight: bold
+}
+
+/* Name.Function */
+.code-box .nf {
+    color: #61AEEE
+}
+
+/* Name.Label */
+.code-box .nl {
+    color: #767600
+}
+
+/* Name.Namespace */
+.code-box .nn {
+    color: #61AEEE;
+    font-weight: bold
+}
+
+/* Name.Tag */
+.code-box .nt {
+    color: #008000;
+    font-weight: bold
+}
+
+/* Name.Variable */
+.code-box .nv {
+    color: #eaff00
+}
+
+/* Operator.Word */
+.code-box .ow {
+    color: #AA22FF;
+    font-weight: bold
+}
+
+/* Text.Whitespace */
+.code-box .w {
+    color: #bbbbbb
+}
+
+/* Literal.Number.Bin */
+.code-box .mb {
+    color: #666666
+}
+
+/* Literal.Number.Float */
+.code-box .mf {
+    color: #666666
+}
+
+/* Literal.Number.Hex */
+.code-box .mh {
+    color: #666666
+}
+
+/* Literal.Number.Integer */
+.code-box .mi {
+    color: #00ff91
+}
+
+/* Literal.Number.Oct */
+.code-box .mo {
+    color: #666666
+}
+
+/* Literal.String.Affix */
+.code-box .sa {
+    color: #BA2121
+}
+
+/* Literal.String.Backtick */
+.code-box .sb {
+    color: #BA2121
+}
+
+/* Literal.String.Char */
+.code-box .sc {
+    color: #BA2121
+}
+
+/* Literal.String.Delimiter */
+.code-box .dl {
+    color: #BA2121
+}
+
+/* Literal.String.Doc */
+.code-box .sd {
+    color: #BA2121;
+    font-style: italic
+}
+
+/* Literal.String.Double */
+.code-box .s2 {
+    color: #00bdff
+}
+
+/* Literal.String.Escape */
+.code-box .se {
+    color: #AA5D1F;
+    font-weight: bold
+}
+
+/* Literal.String.Heredoc */
+.code-box .sh {
+    color: #BA2121
+}
+
+/* Literal.String.Interpol */
+.code-box .si {
+    color: #A45A77;
+    font-weight: bold
+}
+
+/* Literal.String.Other */
+.code-box .sx {
+    color: #008000
+}
+
+/* Literal.String.Regex */
+.code-box .sr {
+    color: #A45A77
+}
+
+/* Literal.String.Single */
+.code-box .s1 {
+    color: #ceff00
+}
+
+/* Literal.String.Symbol */
+.code-box .ss {
+    color: #19177C
+}
+
+/* Name.Builtin.Pseudo */
+.code-box .bp {
+    color: #c300ff
+}
+
+/* Name.Function.Magic */
+.code-box .fm {
+    color: #61AEEE
+}
+
+/* Name.Variable.Class */
+.code-box .vc {
+    color: #19177C
+}
+
+/* Name.Variable.Global */
+.code-box .vg {
+    color: #19177C
+}
+
+/* Name.Variable.Instance */
+.code-box .vi {
+    color: #19177C
+}
+
+/* Name.Variable.Magic */
+.code-box .vm {
+    color: #7bff00
+}
+
+/* Literal.Number.Integer.Long */
+.code-box .il {
+    color: #666666
+}
+
+/* symbols(., *, (),... */
+.code-box .p {
+    color: #ff8800
+}
+
+
+@media (max-width:450px) {
+    code {
+        font-size: 0.8rem;
+    }
+
+}
+/* ----------------------------------------------------------------------------------------------------- */
+
+/* Styling the 'div' tag that holds the 'copy code' structure */
+.language {
+    font-size: 0.875rem;
+}
+
+.copy-icon {
+    cursor: pointer;
+    color: #e0e0e0;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.code-info {
+    /* background-color: #505050; */
+    background-color: #192a45;
+    border-radius: 12px 12px 0 0;
+    padding: 8px 16px;
+    color: #e0e0e0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* --------------------------------------------------------------------------------- */
+
+/* Base Table Styles */
+table {
+    margin-top: 25px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    direction: ltr;
+}
+
+table th,
+table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+
+/* Responsive Tables */
+@media (max-width: 600px){
+    table th, table td {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px){
+    table th, table td {
+        font-size: 0.8rem;
+    }
+}
+/* --------------------------------------------------------------------------------------------------- */
+
+/* Responsive Images */
+.img-zero {
+    margin: 20px 0;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+/* -------------------------------------------------------------------------------------------------- */
+
+
+/* List of contents */
+.toc {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px 25px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.toc h3 {
+    margin-top: 0;
+}
+
+.toc ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.toc ul li {
+    margin: 5px 0;
+}
+
+.toc ul li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.toc ul li a:hover {
+    text-decoration: underline;
+}
+/* ------------------------------------------------------------------------------------------------- */
+
+
+/* style for edit icon */
+.edit-icon {
+    text-decoration: none;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 50;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    width: 53px;
+    height: 53px;
+    background-color: #333333;
+}
+
+.edit-icon i {
+    color: white;
+    font-size: 1.4375rem;
+}
+/* --------------------------------------------------------------------------------------------------- */
+/* Style for Contact Us */
+.team-logo {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* ----------------------------------------------------------------- */
+
+h2.contact-us-text {
+    display: none;
+}
+
+h3 {
+    margin-bottom: 18px;
+}
+
+#contact-us>h3 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+p {
+    margin-bottom: 16px;
+}
+
+/* ----------------------------------------------------------------- */
+
+.separate-line {
+    width: 95%;
+    height: 4px;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    background-color: #333;
+}
+
+/* ----------------------------------------------------------------- */
+#about-us * {
+    text-align: right;
+}
+
+/* ----------------------------------------------------------------- */
+.owners {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+
+.persons {
+    max-width: 400px;
+    min-width: 280px;
+    height: max-content;
+
+    margin-bottom: 50px;
+    padding: 0 30px;
+    padding-top: 15px;
+    padding-bottom: 25px;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* ----------------------------------- */
+/* personal logo and its div */
+.personal-logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    padding: 12px;
+}
+
+.personal-logo-img {
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+    object-position: center;
+}
+
+/* ----------------------------------- */
+.personal-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 500px;
+    height: 250px;
+}
+
+/* ----------------------------------- */
+.info-text p {
+    margin-bottom: 5px;
+    font-size: 0.89rem;
+}
+
+/* ----------------------------------- */
+.contact-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------------- */
+
+@media (max-width:950px) {
+    .personal-logo {
+        width: 120px;
+        height: 120px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    }
+}
+@media (max-width:450px) {
+    .persons {
+        padding: 0 15px;
+        padding-top: 15px;
+        padding-bottom: 25px;
+    }
+
+
+    .personal-logo {
+        width: 100px;
+        height: 100px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    }
+
+    .info-text p {
+        font-size: 0.82rem;
+    }
+}
+
+/* ---------------------------------------------------------------------------------------- */
+/* style for email icon */
+.email-icon {
+    text-decoration: none;
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    z-index: 50;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    width: 53px;
+    height: 53px;
+    background-color: #333333;
+}
+
+.email-icon i {
+    color: white;
+    font-size: 1.4375rem;
+}
