@@ -1,11 +1,11 @@
 # assets
 
-# this project includes:
+# This project includes:
 
-* CSS File's
-* JS File's
-* Image File's
-* font's
+* CSS Files
+* JS Files
+* Image Files
+* fonts
 
 
-***This file's is used for Electronic booklet***
+***These files are used for Electronic booklets***
